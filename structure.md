@@ -55,6 +55,10 @@ This class is used to
 * classify the sentence by applying dropout to the pooled-output and project it using a linear layer.
 * adjust the model paramters depending on whether we are pre-training or fine-tuning BERT
 
+## optimizer.py (to be implemented)
+This is where `AdamW` is defined.
+You will need to implement the `step()` method for the [Adam optimizer with weight decay](https://arxiv.org/pdf/1711.05101.pdf).
+
 ## base_bert.py
 This is the base class for the BertModel. It contains functions to 
 1. initialize the weights ``init_weights``, ``_init_weights``
@@ -63,9 +67,6 @@ You won't need to modify this file in this assignment.
 
 ## tokenier.py
 This is where `BertTokenizer` is defined. You won't need to modify this file in this assignment.
-
-## optimizer.py
-This is where `AdamW` is defined. You won't need to modify this file in this assignment.
 
 ## config.py
 This is where the configuration class is defined. You won't need to modify this file in this assignment.
