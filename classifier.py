@@ -32,11 +32,10 @@ def seed_everything(seed=11747):
 class BertSentClassifier(torch.nn.Module):
     def __init__(self, config):
         super(BertSentClassifier, self).__init__()
-        pass
 
     def forward(self, input_ids, token_type_ids, attention_mask):
-        #
-        pass
+        # todo
+        raise NotImplementedError()
 
 
 # create a custom Dataset Class to be used for the dataloader
