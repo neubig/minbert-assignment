@@ -1,7 +1,7 @@
 # minbert Assignment
 by Shuyan Zhou, Zhengbao Jiang, Ritam Dutt and Brendon Boldt
 
-This is an exercise in developing a minimalist version of BERT, part of Carnegie Mellon University's [CS11-747: Neural Networks for NLP](http://www.phontron.com/class/nn4nlp2020/).
+This is an exercise in developing a minimalist version of BERT, part of Carnegie Mellon University's [CS11-711 Advanced NLP](http://phontron.com/class/anlp2021/index.html).
 
 In this assignment, you will implement some important components of the BERT model to better understanding its architecture. 
 You will then perform sentence classification on ``sst`` dataset and ``cfimdb`` dataset with the BERT model.
