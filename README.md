@@ -12,7 +12,8 @@ You will then perform sentence classification on ``sst`` dataset and ``cfimdb`` 
 * Follow `setup.sh` to properly setup the environment and install dependencies.
 * There is a detailed description of the code structure in [structure.md](./structure.md), including a description of which parts you will need to implement.
 * You are only allowed to use `torch`, no other external libraries are allowed (e.g., `transformers`).
-* We will run your code with the following commands, so make sure that whatever your best results are reproducible using these commands (where you replace ANDREWID with your andrew ID):
+* We will run your code with the following commands, so make sure that whatever your best results are reproducible using these commands (where you replace ANDREWID with your lowercase Andrew ID):
+    * Do not change any of the existing command options (including defaults) or add any new required parameters
 ```
 mkdir -p ANDREWID
 
@@ -35,7 +36,7 @@ Dev Accuracy: 0.966 (0.007)
 Test Accuracy: -
 
 ### Submission
-The submission file should be a zip file with the following structure (assuming the andrew id is ``ANDREWID``):
+The submission file should be a zip file with the following structure (assuming the lowercase Andrew ID is ``ANDREWID``):
 ```
 ANDREWID/
 ├── base_bert.py
@@ -57,6 +58,8 @@ ANDREWID/
 ```
 
 `prepare_submit.py` can help to create(1) or check(2) the to-be-submitted zip file. It will throw assertion errors if the format is not expected, and we will *not accept submissions that fail this check*. Usage: (1) To create and check a zip file with your outputs, run `python3 prepare_submit.py path/to/your/output/dir ANDREWID`, (2) To check your zip file, run `python3 prepare_submit.py path/to/your/submit/zip/file.zip ANDREWID`
+
+Please double check this before you submit to Canvas; most recently we had about 10/100 students lose a 1/3 letter grade because of an improper submission format.
 
 ### Grading
 * A+: You additionally implement something else on top of the requirements for A, and achieve significant accuracy improvements. Please write down the things you implemented and experiments you performed in the report. You are also welcome to provide additional materials such as commands to run your code in a script and training logs.
