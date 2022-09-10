@@ -19,7 +19,7 @@ class BertSelfAttention(nn.Module):
     self.query = nn.Linear(config.hidden_size, self.all_head_size)
     self.key = nn.Linear(config.hidden_size, self.all_head_size)
     self.value = nn.Linear(config.hidden_size, self.all_head_size)
-    # this attention is applied after calculating the attention score following the original implementation of transformer
+    # this dropout is applied to normalized attention scores following the original implementation of transformer
     # although it is a bit unusual, we empirically observe that it yields better performance
     self.dropout = nn.Dropout(config.attention_probs_dropout_prob)
 
