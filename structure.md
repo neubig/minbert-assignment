@@ -10,7 +10,7 @@ The multi-head attention layer of the transformer. This layer maps a query and a
 3. follow the equation to compute the attended output of each head
 4. concatenate multi-head attention outputs to recover the original shape
 
-<img src="https://render.githubusercontent.com/render/math?math=Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}}V)">
+$$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}})V$$
 
 ### BertLayer
 This corresponds to one transformer layer which has 
