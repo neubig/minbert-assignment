@@ -59,7 +59,7 @@ This class is used to
 This is where `AdamW` is defined.
 You will need to update the `step()` function based on [Decoupled Weight Decay Regularization](https://arxiv.org/abs/1711.05101) and [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980).
 There are a few slight variations on AdamW, pleae note the following:
-- The reference uses the "efficient" method of computing the bias correction mentioned at the end of "2 Algorithm" in Kigma & Ba (2014) in place of the intermediate m hat and v hat method.
+- The reference uses the "efficient" method of computing the bias correction mentioned at the end of section 2 "Algorithm" in Kigma & Ba (2014) in place of the intermediate m hat and v hat method.
 - The learning rate is incorporated into the weight decay update (unlike Loshchiloc & Hutter (2017)).
 - There is no learning rate schedule.
 

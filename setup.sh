@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-conda create -n bert_hw python=3.7
+conda create -n bert_hw python=3.8
 conda activate bert_hw
 
 conda install pytorch==1.8.0 torchvision torchaudio cudatoolkit=10.1 -c pytorch
