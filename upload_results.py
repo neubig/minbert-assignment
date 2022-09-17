@@ -82,6 +82,7 @@ def main():
     target_language = 'eng'
     shared_users = ['neubig@gmail.com']
     system_name = f'cmu_anlp_{andrew_id}'
+    online_split = 'validation' if args.split == 'dev' else args.split
 
     # Convert file
     new_file = convert_file(args.output, label_mapping)
@@ -98,7 +99,7 @@ def main():
         metric_names=metric_names,
         source_language=source_language,
         target_language=target_language,
-        dataset_split=args.split,
+        dataset_split=online_split,
         shared_users=shared_users,
         system_details={},
     )
@@ -107,7 +108,7 @@ def main():
     client_config = Config(
         email,
         api_key,
-        environment='main',
+        environment='local',
     )
     client = ExplainaboardClient(client_config)
 
