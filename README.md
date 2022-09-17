@@ -11,7 +11,7 @@ You will then perform sentence classification on ``sst`` dataset and ``cfimdb`` 
 ### Important Notes
 * Follow `setup.sh` to properly setup the environment and install dependencies.
 * There is a detailed description of the code structure in [structure.md](./structure.md), including a description of which parts you will need to implement.
-* You are only allowed to use `torch`, no other external libraries are allowed (e.g., `transformers`).
+* You are only allowed to use libraries that are installed by `setup.sh`, no other external libraries are allowed (e.g., `transformers`).
 * We will run your code with the following commands, so make sure that whatever your best results are reproducible using these commands (where you replace ANDREWID with your lowercase Andrew ID):
     * Do not change any of the existing command options (including defaults) or add any new required parameters
 ```
