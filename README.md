@@ -36,7 +36,18 @@ Dev Accuracy: 0.966 (0.007)
 Test Accuracy: -
 
 ### Submission
-The submission file should be a zip file with the following structure (assuming the lowercase Andrew ID is ``ANDREWID``):
+
+We are asking you to submit in two ways:
+1. *Canvas:* a full code package, which will be checked by the TAs in the 1-2 weeks 
+   after the assignment for its executability.
+2. *ExplainaBoard:* which will grade your assignment immediately, so you can make sure
+   that your accuracy matches what you would expect.
+
+#### Canvas Submission
+
+For submission via [Canvas](https://canvas.cmu.edu/),
+the submission file should be a zip file with the following structure (assuming the
+lowercase Andrew ID is ``ANDREWID``):
 ```
 ANDREWID/
 ├── base_bert.py
@@ -57,9 +68,43 @@ ANDREWID/
 └── setup.py
 ```
 
-`prepare_submit.py` can help to create(1) or check(2) the to-be-submitted zip file. It will throw assertion errors if the format is not expected, and we will *not accept submissions that fail this check*. Usage: (1) To create and check a zip file with your outputs, run `python3 prepare_submit.py path/to/your/output/dir ANDREWID`, (2) To check your zip file, run `python3 prepare_submit.py path/to/your/submit/zip/file.zip ANDREWID`
+`prepare_submit.py` can help to create(1) or check(2) the to-be-submitted zip file. It
+will throw assertion errors if the format is not expected, and *submissions that fail
+this check will be graded down*.
 
-Please double check this before you submit to Canvas; most recently we had about 10/100 students lose a 1/3 letter grade because of an improper submission format.
+Usage:
+1. To create and check a zip file with your outputs, run
+   `python3 prepare_submit.py path/to/your/output/dir ANDREWID`
+2. To check your zip file, run
+   `python3 prepare_submit.py path/to/your/submit/zip/file.zip ANDREWID`
+
+Please double check this before you submit to Canvas; most recently we had about 10/100
+students lose a 1/3 letter grade because of an improper submission format.
+
+#### ExplainaBoard Submission
+
+To submit your outputs via [ExplainaBoard](https://explainaboard.inspiredco.ai), first
+click the top-right of the site to log in, and then again click the top-right to view
+your API key. Run the following to save your email and API key to environmental
+variables:
+
+```
+export EB_EMAIL=your_email_used_for_explainaboard
+export EB_API_KEY=your_api_key_for_explainaboard
+export EB_ANDREW_ID=your_andrew_id
+```
+
+Now you can upload the outputs of your model.
+
+```
+python upload_results.py --dataset sst --split dev --output sst-dev-output.txt
+python upload_results.py --dataset sst --split test --output sst-test-output.txt
+python upload_results.py --dataset cfimdb --split dev --output cfimdb-dev-output.txt
+python upload_results.py --dataset cfimdb --split test --output cfimdb-test-output.txt
+```
+
+You can then go to the ExplainaBoard systems page to confirm that the results are
+uploaded properly.
 
 ### Grading
 * A+: You additionally implement something else on top of the requirements for A, and achieve significant accuracy improvements. Please write down the things you implemented and experiments you performed in the report. You are also welcome to provide additional materials such as commands to run your code in a script and training logs.
@@ -70,6 +115,15 @@ Please double check this before you submit to Canvas; most recently we had about
 * A-: You implement all the missing pieces and the original ``classifier.py`` with ``--option pretrain`` and ``--option finetune`` code but accuracy is not comparable to the reference.
 * B+: All missing pieces are implemented and pass tests in ``sanity_check.py`` (bert implementation) and ``optimizer_test.py`` (optimizer implementation)
 * B or below: Some parts of the missing pieces are not implemented.
+
+If your results can be confirmed through ExplainaBoard, but there are problems with your
+code submitted through Canvas, such as not being properly formatted, not executing in
+the appropriate amount of time, etc., you will be graded down 1/3 grade.
+
+All assignments must be done individually and we will be running plagiarism detection
+on your code. If we confirm that any code was plagiarized from that of other students
+in the class, you will be subject to strict measure according to CMUs academic integrity
+policy.
 
 ### Acknowledgement
 Parts of the code are from the [`transformers`](https://github.com/huggingface/transformers) library ([Apache License 2.0](./LICENSE)).
