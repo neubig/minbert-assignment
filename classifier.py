@@ -73,17 +73,15 @@ class BertDataset(Dataset):
     def collate_fn(self, all_data):
 
         token_ids, token_type_ids, attention_mask, labels, sents = self.pad_data(all_data)
-
-        batches = []
-        batches.append({
+        batched_data = {
                 'token_ids': token_ids,
                 'token_type_ids': token_type_ids,
                 'attention_mask': attention_mask,
                 'labels': labels,
                 'sents': sents,
-            })
+            }
 
-        return batches
+        return batched_data
 
 
 # create the data which is a list of (sentence, label, token for the labels)
@@ -115,8 +113,8 @@ def model_eval(dataloader, model, device):
     y_pred = []
     sents = []
     for step, batch in enumerate(tqdm(dataloader, desc=f'eval', disable=TQDM_DISABLE)):
-        b_ids, b_type_ids, b_mask, b_labels, b_sents = batch[0]['token_ids'], batch[0]['token_type_ids'], \
-                                                       batch[0]['attention_mask'], batch[0]['labels'], batch[0]['sents']
+        b_ids, b_type_ids, b_mask, b_labels, b_sents = batch['token_ids'], batch['token_type_ids'], \
+                                                       batch['attention_mask'], batch['labels'], batch['sents']
 
         b_ids = b_ids.to(device)
         b_mask = b_mask.to(device)
@@ -188,8 +186,8 @@ def train(args):
         train_loss = 0
         num_batches = 0
         for step, batch in enumerate(tqdm(train_dataloader, desc=f'train-{epoch}', disable=TQDM_DISABLE)):
-            b_ids, b_type_ids, b_mask, b_labels, b_sents = batch[0]['token_ids'], batch[0]['token_type_ids'], batch[0][
-                'attention_mask'], batch[0]['labels'], batch[0]['sents']
+            b_ids, b_type_ids, b_mask, b_labels, b_sents = batch['token_ids'], batch['token_type_ids'], batch[
+                'attention_mask'], batch['labels'], batch['sents']
 
             b_ids = b_ids.to(device)
             b_mask = b_mask.to(device)
