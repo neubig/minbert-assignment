@@ -71,17 +71,11 @@ class BertDataset(Dataset):
         return token_ids, token_type_ids, attention_mask, labels, sents
 
     def collate_fn(self, all_data):
-        all_data.sort(key=lambda x: -len(x[2]))  # sort by number of tokens
+
+        token_ids, token_type_ids, attention_mask, labels, sents = self.pad_data(all_data)
 
         batches = []
-        num_batches = int(np.ceil(len(all_data) / self.p.batch_size))
-
-        for i in range(num_batches):
-            start_idx = i * self.p.batch_size
-            data = all_data[start_idx: start_idx + self.p.batch_size]
-
-            token_ids, token_type_ids, attention_mask, labels, sents = self.pad_data(data)
-            batches.append({
+        batches.append({
                 'token_ids': token_ids,
                 'token_type_ids': token_type_ids,
                 'attention_mask': attention_mask,
@@ -245,14 +239,13 @@ def test(args):
 
         with open(args.dev_out, "w+") as f:
             print(f"dev acc :: {dev_acc :.3f}")
-            for s, t, p in zip(dev_sents, dev_true, dev_pred):
-                f.write(f"{s} ||| {t} ||| {p}\n")
+            for s, p in zip(dev_sents, dev_pred):
+                f.write(f"{p} ||| {s}\n")
 
         with open(args.test_out, "w+") as f:
             print(f"test acc :: {test_acc :.3f}")
-            for s, t, p in zip(test_sents, test_true, test_pred):
-                f.write(f"{s} ||| {t} ||| {p}\n")
-
+            for s, p in zip(test_sents, test_pred):
+                f.write(f"{p} ||| {s}\n")
 
 def get_args():
     parser = argparse.ArgumentParser()
