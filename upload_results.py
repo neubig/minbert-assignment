@@ -1,7 +1,7 @@
+from __future__ import annotations
 import argparse
 import json
 import os
-from typing import Dict
 
 from explainaboard_api_client.model.system import System
 from explainaboard_api_client.model.system_create_props import SystemCreateProps
