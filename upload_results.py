@@ -1,3 +1,4 @@
+from __future__ import annotations
 import argparse
 import json
 import os
@@ -108,7 +109,7 @@ def main():
     client_config = Config(
         email,
         api_key,
-        environment='local',
+        environment='main',
     )
     client = ExplainaboardClient(client_config)
 
