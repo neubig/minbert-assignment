@@ -31,6 +31,12 @@ def main():
         "to the ExplainaBoard web interface."
     )
     parser.add_argument(
+        "--system_name",
+        type=str,
+        required=True,
+        help="The name of the system",
+    )
+    parser.add_argument(
         "--output",
         type=str,
         required=True,
@@ -82,7 +88,7 @@ def main():
     source_language = 'eng'
     target_language = 'eng'
     shared_users = ['neubig@gmail.com']
-    system_name = f'cmu_anlp_{andrew_id}'
+    system_name = f'anlp_{andrew_id}_{args.system_name}'
     online_split = 'validation' if args.split == 'dev' else args.split
 
     # Convert file

@@ -94,13 +94,25 @@ export EB_API_KEY=your_api_key_for_explainaboard
 export EB_ANDREW_ID=your_andrew_id
 ```
 
-Now you can upload the outputs of your model.
+Now you can upload the outputs of your model with the `upload_results.py` script. There
+are the following options.
+
+* `--system_name` a name that you can choose for your system. Your final system name
+  will be `anlp_{andrewid}_{system_name}`.
+* `--dataset` the dataset name (sst/cfimdb).
+* `--split` the split (dev/test).
+* `--output` the system output you're uploading.
+* `--public` if you want your output listed on the public site so people in the class
+  can compare and contrast with it add this flag. But it is off by default (and has no
+  effect on your grade).
+
+Here is an example of uploading all of the datasets with a system name of `baseline`.
 
 ```
-python upload_results.py --dataset sst --split dev --output sst-dev-output.txt
-python upload_results.py --dataset sst --split test --output sst-test-output.txt
-python upload_results.py --dataset cfimdb --split dev --output cfimdb-dev-output.txt
-python upload_results.py --dataset cfimdb --split test --output cfimdb-test-output.txt
+python upload_results.py --system_name baseline --dataset sst --split dev --output sst-dev-output.txt
+python upload_results.py --system_name baseline --dataset sst --split test --output sst-test-output.txt
+python upload_results.py --system_name baseline --dataset cfimdb --split dev --output cfimdb-dev-output.txt
+python upload_results.py --system_name baseline --dataset cfimdb --split test --output cfimdb-test-output.txt
 ```
 
 You can then go to the ExplainaBoard systems page to confirm that the results are
@@ -111,7 +123,7 @@ uploaded properly.
     * perform [continued pre-training](https://arxiv.org/abs/2004.10964) using the MLM objective to do domain adaptation
     * try [alternative fine-tuning algorithms](https://www.aclweb.org/anthology/2020.acl-main.197)
     * add other model components on top of the model
-* A: You implement all the missing pieces and the original ``classifier.py`` with ``--option pretrain`` and ``--option finetune`` code that achieves comparable accuracy to our reference implementation
+* A: You implement all the missing pieces and the original ``classifier.py`` with ``--option pretrain`` and ``--option finetune`` code that achieves comparable accuracy to our reference implementation.
 * A-: You implement all the missing pieces and the original ``classifier.py`` with ``--option pretrain`` and ``--option finetune`` code but accuracy is not comparable to the reference.
 * B+: All missing pieces are implemented and pass tests in ``sanity_check.py`` (bert implementation) and ``optimizer_test.py`` (optimizer implementation)
 * B or below: Some parts of the missing pieces are not implemented.
