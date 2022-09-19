@@ -12,7 +12,7 @@ from explainaboard_client.tasks import TaskType
 from explainaboard_client.utils import generate_dataset_id
 
 
-def convert_file(orig_file: str, label_mapping: Dict[str, str]) -> str:
+def convert_file(orig_file: str, label_mapping: dict[str, str]) -> str:
     """
     Convert the original file to the new format
     """
