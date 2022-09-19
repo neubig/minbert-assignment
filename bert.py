@@ -68,25 +68,28 @@ class BertSelfAttention(nn.Module):
 class BertLayer(nn.Module):
   def __init__(self, config):
     super().__init__()
-    # self attention
+    # multi-head attention
     self.self_attention = BertSelfAttention(config)
+    # add-norm
     self.attention_dense = nn.Linear(config.hidden_size, config.hidden_size)
     self.attention_layer_norm = nn.LayerNorm(config.hidden_size, eps=config.layer_norm_eps)
     self.attention_dropout = nn.Dropout(config.hidden_dropout_prob)
     # feed forward
     self.interm_dense = nn.Linear(config.hidden_size, config.intermediate_size)
     self.interm_af = F.gelu
-    # layer out
+    # another add-norm
     self.out_dense = nn.Linear(config.intermediate_size, config.hidden_size)
     self.out_layer_norm = nn.LayerNorm(config.hidden_size, eps=config.layer_norm_eps)
     self.out_dropout = nn.Dropout(config.hidden_dropout_prob)
 
   def add_norm(self, input, output, dense_layer, dropout, ln_layer):
     """
-    input: the input
-    output: the input that requires the sublayer to transform
-    dense_layer, dropput: the sublayer
-    ln_layer: layer norm that takes input+sublayer(output)
+    this function is applied after the multi-head attention layer or the feed forward layer
+    input: the input of the previous layer
+    output: the output of the previous layer
+    dense_layer: used to transform the output
+    dropout: the dropout to be applied 
+    ln_layer: the layer norm to be applied
     """
     # todo
     raise NotImplementedError
@@ -97,9 +100,9 @@ class BertLayer(nn.Module):
     as shown in the left of Figure 1 of https://arxiv.org/pdf/1706.03762.pdf 
     each block consists of 
     1. a multi-head attention layer (BertSelfAttention)
-    2. a add-norm that takes the output of BertSelfAttention and the input of BertSelfAttention
+    2. a add-norm that takes the input and output of the multi-head attention layer
     3. a feed forward layer
-    4. a add-norm that takes the output of feed forward layer and the input of feed forward layer
+    4. a add-norm that takes the input and output of the feed forward layer
     """
     # todo
     # multi-head attention w/ self.self_attention
