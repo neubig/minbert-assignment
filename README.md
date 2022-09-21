@@ -1,5 +1,5 @@
 # minbert Assignment
-by Shuyan Zhou, Zhengbao Jiang, Ritam Dutt and Brendon Boldt
+by Shuyan Zhou, Zhengbao Jiang, Ritam Dutt, Brendon Boldt, Aditya Veerubhotla, and Graham Neubig
 
 This is an exercise in developing a minimalist version of BERT, part of Carnegie Mellon University's [CS11-711 Advanced NLP](http://phontron.com/class/anlp2021/index.html).
 
@@ -40,7 +40,7 @@ Test Accuracy: -
 We are asking you to submit in two ways:
 1. *Canvas:* a full code package, which will be checked by the TAs in the 1-2 weeks 
    after the assignment for its executability.
-2. *ExplainaBoard:* which will grade your assignment immediately, so you can make sure
+2. *ExplainaBoard:* which will score your assignment immediately, so you can make sure
    that your accuracy matches what you would expect.
 
 #### Canvas Submission
