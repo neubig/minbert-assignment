@@ -43,7 +43,7 @@ class AdamW(Optimizer):
                 # State should be stored in this dictionary
                 state = self.state[p]
 
-                # Access hyperparameters from the `group` dictionary
+                # Access hyper-parameters from the `group` dictionary
                 alpha = group["lr"]
 
                 # Update first and second moments of the gradients
