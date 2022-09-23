@@ -28,7 +28,7 @@ class BertSelfAttention(nn.Module):
     bs, seq_len = x.shape[:2]
     proj = linear_layer(x)
     # next, we need to produce multiple heads for the proj 
-    # this is done by spliting the hidden state to self.num_attention_heads, each of size self.attention_head_size
+    # this is done by splitting the hidden state to self.num_attention_heads, each of size self.attention_head_size
     proj = proj.view(bs, seq_len, self.num_attention_heads, self.attention_head_size)
     # by proper transpose, we have proj of [bs, num_attention_heads, seq_len, attention_head_size]
     proj = proj.transpose(1, 2)

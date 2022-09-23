@@ -78,7 +78,7 @@ class PretrainedConfig(object):
     # TPU arguments
     self.xla_device = kwargs.pop("xla_device", None)
 
-    # Name or path to the pretrained checkpoint
+    # Name or path to the pre-trained checkpoint
     self._name_or_path = str(kwargs.pop("name_or_path", ""))
 
     # Drop the transformers version info

@@ -30,7 +30,7 @@ class BertSentClassifier(torch.nn.Module):
         self.num_labels = config.num_labels
         self.bert = BertModel.from_pretrained('bert-base-uncased')
 
-        # pretrain mode does not require updating bert paramters.
+        # pretrain mode does not require updating bert parameters.
         for param in self.bert.parameters():
             if config.option == 'pretrain':
                 param.requires_grad = False
@@ -171,7 +171,7 @@ def train(args):
 
     config = SimpleNamespace(**config)
 
-    # initialize the Senetence Classification Model
+    # initialize the Sentence Classification Model
     model = BertSentClassifier(config)
     model = model.to(device)
 
